@@ -1,13 +1,12 @@
 from aiogram import Router
-from aiogram.filters import CommandStart
 from aiogram.types import Message
+from aiogram.filters import Command
 
 router = Router()
 
-@router.message(CommandStart())
-async def start(message: Message):
+@router.message(Command("start"))
+async def cmd_start(message: Message):
     await message.answer(
-        "👋 Привет!\n\n"
-        "Gift Bot запущен.\n\n"
-        "Скоро здесь будет анализ Telegram Gifts."
+        "👋 Привет! Я бот для анализа Telegram Gifts.\n\n"
+        "Используй /evaluate <id> для оценки подарка."
     )
